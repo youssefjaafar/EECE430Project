@@ -79,16 +79,17 @@ INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_
 INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('wissambate@hotmail.com', 'Abc@123', 'Wissam', 'Bate', '02 - 03 - 1967', 'male', 'Lebanon Beirut');
 
 
-INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('alexgibson@hotmail.com', 'Dentist');
-INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('imadmitchell@hotmail.com', 'Psychologist');
-INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('serenatucker@hotmail.com', 'Cardiologist');
-INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('jadfaulkner@hotmail.com', 'Dermatologist');
-INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('yanisenriquez@hotmail.com', 'Psychologist');
-INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('paytonehorne@hotmail.com', 'Dermatologist');
-INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('jihanelabmb@hotmail.com', 'Psychologist');
-INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('isabellacruz@hotmail.com', 'Dentist');
-INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('larawarner@hotmail.com', 'Family Medicine');
-INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('wissambate@hotmail.com', 'Family Medicine');
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`, `total_ratings`, `avg_rating`) VALUES ('alexgibson@hotmail.com', 'Dentist', 0, 0.0);
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`, `total_ratings`, `avg_rating`) VALUES ('imadmitchell@hotmail.com', 'Psychologist', 0, 0.0);
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`, `total_ratings`, `avg_rating`) VALUES ('serenatucker@hotmail.com', 'Cardiologist', 0, 0.0);
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`, `total_ratings`, `avg_rating`) VALUES ('jadfaulkner@hotmail.com', 'Dermatologist', 0, 0.0);
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`, `total_ratings`, `avg_rating`) VALUES ('yanisenriquez@hotmail.com', 'Psychologist', 0, 0.0);
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`, `total_ratings`, `avg_rating`) VALUES ('paytonehorne@hotmail.com', 'Dermatologist', 0, 0.0);
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`, `total_ratings`, `avg_rating`) VALUES ('jihanelabmb@hotmail.com', 'Psychologist', 0, 0.0);
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`, `total_ratings`, `avg_rating`) VALUES ('isabellacruz@hotmail.com', 'Dentist', 0, 0.0);
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`, `total_ratings`, `avg_rating`) VALUES ('wissambate@hotmail.com', 'Family Medicine', 0, 0.0);
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`, `total_ratings`, `avg_rating`) VALUES ('larawarner@hotmail.com', 'Family Medicine', 0, 0.0);
+
 
 INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('leaventura@hotmail.com', 'Abc@123', 'Lea', 'Ventura', '05 - 06 - 1997', 'female', 'Lebanon Beirut');
 INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('janinebarnes@hotmail.com', 'Abc@123', 'Janine', 'Barnes', '03 - 05 - 1987', 'female', 'Lebanon Beirut');
