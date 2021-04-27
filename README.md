@@ -41,7 +41,7 @@ Or localhost:8000 (localhost instead of ip_address)
 A welcome from django server will show.
 
 ``` 
-**Step 3 -Running the project** 
+**Step 3-Running the project** 
 ``` 
 Make sure you are working on my_env & correct path
 First, Install the required python libraries as follows: 
