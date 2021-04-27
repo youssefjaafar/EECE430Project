@@ -1,7 +1,7 @@
 # EECE430Project
 ## Django Online Consultation Web Application 
 ## Steps to Run the Project 
-**Step 1-Database Preparation**
+**Step 1 - Database Preparation**
 ``` 
 Download MySQL workbench based on the following steps https://m.youtube.com/watch?v=sCcncJNLbaw 
 While installing you will be asked to provide a username and password for your MySQL local instance, make sure to remember them 
@@ -9,7 +9,7 @@ Create a new database by copying the code in the query.txt file uploaded to your
 Execute the code in a SQL query 
 
 ``` 
-**Step 2-Django Environment Preparation (If you don't already have a django Virtual Environment)** 
+**Step 2 - Django Environment Preparation (If you don't already have a django Virtual Environment)** 
 ``` 
 The following steps are provided by Professor Ali Moukalled
 Steps to install Django2.0.1 with Python3.6.4 on windows 64bits
@@ -41,7 +41,7 @@ Or localhost:8000 (localhost instead of ip_address)
 A welcome from django server will show.
 
 ``` 
-**Step 3-Running the project** 
+**Step 3 - Running the project** 
 ``` 
 Make sure you are working on my_env & correct path
 First, Install the required python libraries as follows: 
