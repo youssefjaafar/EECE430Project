@@ -1,0 +1,156 @@
+-- create schema online_consultation;
+
+
+DROP TABLE `online_consultation`.`reports`;
+DROP TABLE `online_consultation`.`appointments`;
+DROP TABLE `online_consultation`.`patients`;
+DROP TABLE `online_consultation`.`doctors`;
+DROP TABLE `online_consultation`.`users`;
+
+CREATE TABLE `online_consultation`.`users` (
+   `email` varchar(100) NOT NULL,
+   `pass` varchar(100) NOT NULL,
+   `first_name` varchar(50) NOT NULL,
+   `last_name` varchar(50) NOT NULL,
+   `dob` varchar(15) NOT NULL,
+   `gender` varchar(20) DEFAULT NULL,
+   `location` varchar(45) DEFAULT NULL,
+   PRIMARY KEY (`email`)
+ );
+
+
+CREATE TABLE `online_consultation`.`doctors` (
+   `email` varchar(100) NOT NULL,
+   `speciality` varchar(100) NOT NULL,
+   `total_ratings` int DEFAULT NULL,
+   `avg_rating` float DEFAULT NULL,
+   PRIMARY KEY (`email`),
+   CONSTRAINT `doctors_ibfk_1` FOREIGN KEY (`email`) REFERENCES `users` (`email`)
+ );
+
+
+CREATE TABLE `online_consultation`.`patients` (
+   `email` varchar(100) NOT NULL,
+   `medical_records` blob DEFAULT NULL,
+   PRIMARY KEY (`email`),
+   CONSTRAINT `patients_ibfk_1` FOREIGN KEY (`email`) REFERENCES `users` (`email`)
+ );
+
+
+CREATE TABLE `online_consultation`.`appointments` (
+   `id` int NOT NULL AUTO_INCREMENT,
+   `email_doctor` varchar(100) NOT NULL,
+   `email_patient` varchar(100) NOT NULL,
+   `appointment_date` varchar(20) NOT NULL,
+   `appointment_time` varchar(20) NOT NULL,
+   `Additional_Message` varchar(500) DEFAULT NULL,
+   `appointment_report` varchar(100) DEFAULT NULL,
+   PRIMARY KEY (`id`,`email_doctor`,`email_patient`,`appointment_date`,`appointment_time`),
+   KEY `appointments_ibfk_2` (`email_patient`),
+   KEY `appointments_ibfk_1` (`email_doctor`),
+   CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`email_doctor`) REFERENCES `doctors` (`email`),
+   CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`email_patient`) REFERENCES `patients` (`email`)
+ );
+
+CREATE TABLE `online_consultation`.`reports` (
+  `app_id` int DEFAULT NULL,
+  `prescription` varchar(100) DEFAULT NULL,
+  `descriptions` varchar(100) DEFAULT NULL,
+  `additional_message` varchar(100) DEFAULT NULL,
+  `attachments` blob DEFAULT NULL
+);
+
+CREATE TABLE `chat_message` (
+   `id` int NOT NULL AUTO_INCREMENT,
+   `message` varchar(1200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+   `timestamp` datetime NOT NULL,
+   `is_read` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+   `receiver_id` int NOT NULL,
+   `sender_id` int NOT NULL,
+   PRIMARY KEY (`id`),
+   KEY `chat_message_sender_id_991c686c` (`sender_id`),
+   KEY `chat_message_receiver_id_0eceddde` (`receiver_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- to insert into reports table:
+-- INSERT INTO online_consultation.reports (
+-- 	appointments_id
+-- 	) VALUES (
+-- 		(select appointment_id FROM online_consultation.appointments WHERE email_doctor = %s and appointment_date = %s and appointment_time = %s)
+-- %s are specified in python	
+
+
+
+-- alexgibson@hotmail.com
+-- imadmitchell@hotmail.com
+-- serenatucker@hotmail.com
+-- jadfaulkner@hotmail.com
+-- yanisenriquez@hotmail.com
+-- paytonehorne@hotmail.com
+-- jihanelabmb@hotmail.com
+-- isabellacruz@hotmail.com
+-- larawarner@hotmail.com
+-- wissambate@hotmail.com
+
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('paytonehorne@hotmail.com', 'Abc@123', 'Payton', 'Horne', '12 - 05 - 1985', 'female', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('yanisenriquez@hotmail.com', 'Abc@123', 'Yanis', 'Enriquez', '03 - 04 - 1981', 'male', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('jadfaulkner@hotmail.com', 'Abc@123', 'Jad', 'Faulkner', '05 - 05 - 1973', 'male', 'Lebanon Mount Lebanon');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('serenatucker@hotmail.com', 'Abc@123', 'Serena', 'Tucker', '03 - 10 - 1991', 'female', 'Lebanon Baaba');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('imadmitchell@hotmail.com', 'Abc@123', 'Imad', 'Mitchell', '04 - 11 - 1982', 'male', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('alexgibson@hotmail.com', 'Abc@123', 'Alex', 'Gibson', '02 - 12 - 1979', 'male', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('jihanelabmb@hotmail.com', 'Abc@123', 'Jihane', 'Lamb', '01 - 01 - 1970', 'female', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('isabellacruz@hotmail.com', 'Abc@123', 'Isabella', 'Cruz', '12 - 12 - 1986', 'female', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('larawarner@hotmail.com', '34567', 'Abc@123', 'Warner', '02 - 02 - 1968', 'female', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('wissambate@hotmail.com', 'Abc@123', 'Wissam', 'Bate', '02 - 03 - 1967', 'male', 'Lebanon Beirut');
+
+
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('alexgibson@hotmail.com', 'Dentist');
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('imadmitchell@hotmail.com', 'Psychologist');
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('serenatucker@hotmail.com', 'Cardiologist');
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('jadfaulkner@hotmail.com', 'Dermatologist');
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('yanisenriquez@hotmail.com', 'Psychologist');
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('paytonehorne@hotmail.com', 'Dermatologist');
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('jihanelabmb@hotmail.com', 'Psychologist');
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('isabellacruz@hotmail.com', 'Dentist');
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('larawarner@hotmail.com', 'Family Medicine');
+INSERT INTO `online_consultation`.`doctors` (`email`, `speciality`) VALUES ('wissambate@hotmail.com', 'Family Medicine');
+
+
+-- leaventura@hotmail.com
+-- janinebarnes@hotmail.com
+-- mariamflower@hotmail.com
+-- ralphberger@hotmail.com
+-- mikestrickland@hotmail.com
+-- mohammadschmitt@hotmail.com
+-- jihadabbott@hotmail.com
+
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('leaventura@hotmail.com', 'Abc@123', 'Lea', 'Ventura', '05 - 06 - 1997', 'female', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('janinebarnes@hotmail.com', 'Abc@123', 'Janine', 'Barnes', '03 - 05 - 1987', 'female', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('mariamflower@hotmail.com', 'Abc@123', 'Mariam', 'Flower', '04 - 04 - 1973', 'female', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('ralphberger@hotmail.com', 'Abc@123', 'Ralph', 'Berger', '05 - 05 - 1999', 'male', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('mikestrickland@hotmail.com', 'Abc@123', 'Mike', 'Strickland', '06 - 06 - 2000', 'male', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('mohammadschmitt@hotmail.com', 'Abc@123', 'Mohammad', 'Schmitt', '07 - 07 - 1997', 'male', 'Lebanon Beirut');
+INSERT INTO `online_consultation`.`users` (`email`, `pass`, `first_name`, `last_name`, `dob`, `gender`, `location`) VALUES ('jihadabbott@hotmail.com', 'Abc@123', 'Jihad', 'Abbott', '05 - 02 - 1956', 'male', 'Lebanon Beirut');
+
+
+INSERT INTO `online_consultation`.`patients` (`email`) VALUES ('leaventura@hotmail.com');
+INSERT INTO `online_consultation`.`patients` (`email`) VALUES ('janinebarnes@hotmail.com');
+INSERT INTO `online_consultation`.`patients` (`email`) VALUES ('mariamflower@hotmail.com');
+INSERT INTO `online_consultation`.`patients` (`email`) VALUES ('ralphberger@hotmail.com');
+INSERT INTO `online_consultation`.`patients` (`email`) VALUES ('mikestrickland@hotmail.com');
+INSERT INTO `online_consultation`.`patients` (`email`) VALUES ('mohammadschmitt@hotmail.com');
+INSERT INTO `online_consultation`.`patients` (`email`) VALUES ('jihadabbott@hotmail.com');
+
+
+
+INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('alexgibson@hotmail.com', 'leaventura@hotmail.com', '2021-05-07', '10:30 AM', 'hello dr');
+INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('imadmitchell@hotmail.com', 'janinebarnes@hotmail.com', '2021-05-07', '7:30 AM', 'hello :D');
+UPDATE `online_consultation`.`appointments` SET `appointment_date` = '2021-05-07' WHERE (`email_doctor` = 'alexgibson@hotmail.com') and (`email_patient` = 'leaventura@hotmail.com') and (`appointment_date` = '2021-04-28') and (`appointment_time` = '10:30 AM');
+INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('imadmitchell@hotmail.com', 'janinebarnes@hotmail.com', '2021-05-08', '7:30 AM', 'hello again');
+INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('imadmitchell@hotmail.com', 'janinebarnes@hotmail.com', '2021-05-09', '7:30 AM', 'hello for the third time');
+INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('jadfaulkner@hotmail.com', 'mariamflower@hotmail.com', '2021-05-09', '4:00 PM', 'hey');
+INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('yanisenriquez@hotmail.com', 'mohammadschmitt@hotmail.com', '2021-05-10', '10:00 AM', 'sup');
+INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('isabellacruz@hotmail.com', 'mohammadschmitt@hotmail.com', '2021-05-11', '12:00 PM', 'helloz');
+
+
