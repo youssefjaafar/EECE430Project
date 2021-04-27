@@ -1,0 +1,28 @@
+drop table online_consultation.reports;
+drop table online_consultation.appointments;
+
+
+CREATE TABLE `online_consultation`.`appointments` (
+   `id` int NOT NULL AUTO_INCREMENT,
+   `email_doctor` varchar(100) NOT NULL,
+   `email_patient` varchar(100) NOT NULL,
+   `appointment_date` varchar(20) NOT NULL,
+   `appointment_time` varchar(20) NOT NULL,
+   `Additional_Message` varchar(500) DEFAULT NULL,
+   `appointment_report` varchar(100) DEFAULT NULL,
+   PRIMARY KEY (`id`,`email_doctor`,`email_patient`,`appointment_date`,`appointment_time`),
+   KEY `appointments_ibfk_2` (`email_patient`),
+   KEY `appointments_ibfk_1` (`email_doctor`),
+   CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`email_doctor`) REFERENCES `doctors` (`email`),
+   CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`email_patient`) REFERENCES `patients` (`email`)
+ );
+
+CREATE TABLE `online_consultation`.`reports` (
+  `app_id` int DEFAULT NULL,
+  `prescription` varchar(100) DEFAULT NULL,
+  `descriptions` varchar(100) DEFAULT NULL,
+  `additional_message` varchar(100) DEFAULT NULL,
+  `attachments` blob DEFAULT NULL
+);
+
+
