@@ -1289,11 +1289,12 @@ try:
 				update_not_done = 1
 				return render(request, "update.html", {'result': result, 'flag':update_not_done})
 
-			regexpass = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"
-			if not re.search(regexpass, password):
-				result = "Password should have at least one number, one uppercase and lowercase characters, one special symbol from (@$!%*#?&amp;), and it should be between 6 and 20 characters long."
-				update_not_done = 1
-				return render(request, "update.html", {'result': result, 'flag': update_not_done})
+			if password != "":
+				regexpass = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!#%*?&]{6,20}$"
+				if not re.search(regexpass, password):
+					result = "Password should have at least one number, one uppercase and lowercase characters, one special symbol from (@$!%*#?&amp;), and it should be between 6 and 20 characters long."
+					update_not_done = 1
+					return render(request, "update.html", {'result': result, 'flag': update_not_done})
 
 
 			result = UpdateUser(first_name, last_name, birth_date, current_email, old_password, new_password, country, city)
