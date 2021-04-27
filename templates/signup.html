@@ -1,0 +1,130 @@
+﻿{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{%static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{%static 'vendor/jquery-ui/jquery-ui.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+
+    <style>
+        #Title > h2{
+            font-size: 30px;
+
+        }
+
+        .signup-content{
+            margin-top:-65px;
+        }
+
+    </style>
+    {% if flag %}
+<script>alert("{{ result }}")</script>
+{% endif %}
+</head>
+
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div id = "Title">
+                    <h2>Sign up</h2>
+                </div>
+                <div class="signup-content">
+                    <form action="signup" method="POST" id="signup-form" class="signup-form">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first_name">First name</label>
+                                <input type="text" class="form-input" name="first_name" id="first_name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Last name</label>
+                                <input type="text" class="form-input" name="last_name" id="last_name" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group form-icon">
+                                <label for="birth_date">Birth date</label>
+                                <input type="text" class="form-input" name="birth_date" id="birth_date"
+                                       placeholder="MM-DD-YYYY", required = "required" />
+                            </div>
+                            <div class="form-radio">
+                                <label for="gender">Gender</label>
+                                <div class="form-flex">
+                                    <input type="radio" name="gender" value="male" id="male" checked="checked" />
+                                    <label for="male">Male</label>
+
+                                    <input type="radio" name="gender" value="female" id="female" />
+                                    <label for="female">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-input" name="email" id="email" required/>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-input" name="password" id="password" />
+                            </div>
+                            <div class="form-group">
+                                <label for="re_password">Repeat your password</label>
+                                <input type="password" class="form-input" name="re_password" id="re_password" />
+                            </div>
+                        </div>
+                        <div class = "form-group">
+                          <label for="myfile">Medical Records:</label>
+                            <input type="file" id="myfile" name="myfile">
+                        </div>
+                        <div class="form-text">
+                            <a href="#" class="add-info-link"><i class="zmdi zmdi-chevron-right"></i>Additional info</a>
+                            <div class="add_info">
+                                <div class="form-group">
+                                    <label for="Country">Country</label>
+                                    <input type="text" class="form-input" name="Country" id="Country" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="City">City</label>
+                                    <input type="text" class="form-input" name="City" id="City" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="submit" id="submit" class="form-submit" value="Submit" />
+
+                        </div>
+                        <div>
+                            <strong><span class="appointment-btn" style="font-size: 12px;"><a href="go_to_signin">Already have an account? Sign-In here!</a></span></strong>
+                            <br></br>
+                            <a href="home">Get back to homepage</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{%static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{%static 'vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script src="{%static 'vendor/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+    <script src="{%static 'vendor/jquery-validation/dist/additional-methods.min.js' %}"></script>
+    <script src="{%static 'js/main.js' %}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

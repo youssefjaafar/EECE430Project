@@ -1,0 +1,191 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Account Info</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{%static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{%static 'vendor/jquery-ui/jquery-ui.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{%static 'css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{%static 'css/animation.css' %}">
+
+    <style>
+
+        .container{
+            padding-top:10px;
+        }
+        #Title > h2{
+            font-size: 30px;
+
+        }
+
+        .update-content{
+            margin-left:100px;
+            height:400px;
+            width:500px;
+
+        }
+
+        .delete-form{
+            margin-top:20px;
+            height:20px;
+
+        }
+
+        .delete-container{
+        width:640px;
+        height:290px;
+        padding:20px;
+
+        }
+
+        .del-button{
+            float:left;
+            margin-left:180px;
+            margin-top:-30px;
+        }
+
+        .delete-form h4{
+            margin-top:-30px;
+            margin-left:130px;
+        }
+
+
+        body {font-family: "Lato", sans-serif;}
+
+        .sidebar {
+          height: 100%;
+          width: 160px;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: #111;
+          overflow-x: hidden;
+          padding-top: 16px;
+        }
+
+        .sidebar a {
+          padding: 6px 8px 6px 16px;
+          text-decoration: none;
+          font-size: 20px;
+          color: #818181;
+          display: block;
+        }
+
+        .sidebar a:hover {
+          color: #f1f1f1;
+        }
+
+        .main {
+          margin-left: 160px; /* Same as the width of the sidenav */
+          padding: 0px 10px;
+        }
+
+        @media screen and (max-height: 450px) {
+          .sidebar {padding-top: 15px;}
+          .sidebar a {font-size: 18px;}
+        }
+
+
+
+
+
+    </style>
+    {% if flag %}
+<script>alert("{{ result }}")</script>
+{% endif %}
+</head>
+
+<body>
+
+  <div class="sidebar">
+  <a href="go_to_info"><i class="fa fa-fw fa-user"></i> Info</a>
+  <a href="go_to_update"><i class="fa fa-fw fa-wrench"></i> Update</a>
+  <a href="go_to_delete"><i class="fa fa-fw fa-minus"></i> Delete</a>
+  <a href="home"><i class="fa fa-fw fa-home"></i> Homepage</a>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <a href="signout">Sign Out</a>
+</div>
+<div class="main">
+      <section class="signup ">
+          <!-- <img src="images/signup-bg.jpg" alt=""> -->
+          <div class="container">
+              <div id = "Title">
+                  <h2>Your Information</h2>
+              </div>
+              <div class="update-content">
+                  <form action="update" method="GET" id="update-form" name="fn" class="update-form">
+                      {% csrf_token %}
+                      <div class="form-row">
+                          <div class="form-group">
+                              <label for="first_name">First name</label>
+                              {{ fn }}
+                          </div>
+                          <div class="form-group">
+                              <label for="last_name">Last name</label>
+                              {{ ln }}<br><br>
+                          </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-group form-icon">
+                              <label for="birth_date">Birth date</label>
+                              {{ dob }}<br><br>
+                          </div>
+                          {% if 'patient' in request.session %}
+                          <div class="form-group form-icon">
+                              <label for="total_appointments">Number of Consultations</label>
+                              {{ consultations }}<br><br>
+                          </div>
+                           {% endif %}
+                          {% if 'doctor' in request.session %}
+                          <div class="form-group form-icon">
+                              <label for="numb_of_ratings">Speciality</label>
+                              {{ speciality }}<br><br>
+                          </div>
+                          {% endif %}
+                      </div>
+                              <div class="form-group">
+                                  <label for="Country">Location</label>
+                                  {{ loc }}
+                              </div>
+
+                      {% if 'doctor' in request.session %}
+                      <div class="form-row">
+                          <div class="form-group form-icon">
+                              <label for="numb_of_ratings">Number of Ratings</label>
+                              {{ numb_of_ratings }}<br><br>
+                          </div>
+
+                          <div class="form-group form-icon">
+                              <label for="average_rating">Average Rating (over 5)</label>
+                              {{ average_rating }}<br><br>
+                          </div>
+
+                      </div>
+                      {% endif %}
+
+                  </form>
+              </div>
+          </div>
+      </section>
+</div>
+
+    <!-- JS -->
+    <script src="{%static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{%static 'vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+    <script src="{%static 'vendor/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+    <script src="{%static 'vendor/jquery-validation/dist/additional-methods.min.js' %}"></script>
+    <script src="{%static 'js/main.js' %}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
