@@ -110,13 +110,3 @@ INSERT INTO `online_consultation`.`patients` (`email`) VALUES ('jihadabbott@hotm
 
 
 
-INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('alexgibson@hotmail.com', 'leaventura@hotmail.com', '2021-05-07', '10:30 AM', 'hello dr');
-INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('imadmitchell@hotmail.com', 'janinebarnes@hotmail.com', '2021-05-07', '7:30 AM', 'hello :D');
-UPDATE `online_consultation`.`appointments` SET `appointment_date` = '2021-05-07' WHERE (`email_doctor` = 'alexgibson@hotmail.com') and (`email_patient` = 'leaventura@hotmail.com') and (`appointment_date` = '2021-04-28') and (`appointment_time` = '10:30 AM');
-INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('imadmitchell@hotmail.com', 'janinebarnes@hotmail.com', '2021-05-08', '7:30 AM', 'hello again');
-INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('imadmitchell@hotmail.com', 'janinebarnes@hotmail.com', '2021-05-09', '7:30 AM', 'hello for the third time');
-INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('jadfaulkner@hotmail.com', 'mariamflower@hotmail.com', '2021-05-09', '4:00 PM', 'hey');
-INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('yanisenriquez@hotmail.com', 'mohammadschmitt@hotmail.com', '2021-05-10', '10:00 AM', 'sup');
-INSERT INTO `online_consultation`.`appointments` (`email_doctor`, `email_patient`, `appointment_date`, `appointment_time`, `Additional_Message`) VALUES ('isabellacruz@hotmail.com', 'mohammadschmitt@hotmail.com', '2021-05-11', '12:00 PM', 'helloz');
-
-
